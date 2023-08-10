@@ -1,0 +1,23 @@
+@startuml
+
+class Persona {
+    -  String nombre
+    - String apellido
+    + getNombre()
+}
+
+Persona --* "1..1   " Dni : comp
+
+class Dni {
+    - char caracter
+    - int numero
+    }
+
+Persona --o "0..*  "Amigo : agg
+
+class Amigo {
+    - String nombre
+    - int edad
+}
+
+@enduml

@@ -1,8 +1,11 @@
 package practica2;
 
+import java.time.LocalDate;
+
 public class Jugador {
     private String nombre, apellido, posicion;
     private Integer numero;
+
 
     public Jugador() {
     }

@@ -1,0 +1,66 @@
+@startuml
+class Pelicula {
+    -titulo: String
+    -duracion: int
+    -edadMinima: int
+    -director: String
+    +Pelicula(titulo: String, duracion: int, edadMinima: int, director: String)
+    +getTitulo(): String
+    +getDuracion(): int
+    +getEdadMinima(): int
+    +getDirector(): String
+    +toString(): String
+}
+
+class Espectador {
+    -nombre: String
+    -edad: int
+    -dineroDisponible: double
+    +Espectador(nombre: String, edad: int, dineroDisponible: double)
+    +getNombre(): String
+    +getEdad(): int
+    +getDineroDisponible(): double
+    +toString(): String
+}
+
+class Sala {
+    -espectadores: Espectador[][]
+    -pelicula: Pelicula
+    +getEspectadores(): Espectador[][]
+    +setEspectadores(espectadores: Espectador[][])
+    +getPelicula(): Pelicula
+    +setPelicula(pelicula: Pelicula)
+    +toString(): String
+}
+
+class Cine {
+    -salas: Sala[]
+    -precioEntrada: double
+    -peliculas: Pelicula[]
+    +Cine()
+    +Cine(numeroSalas: int, precioEntrada: double)
+    +getPeliculaActual(sala: Sala): Pelicula
+    +getSalas(): Sala[]
+    +getPrecioEntrada(): double
+    +toString(): String
+}
+
+class CineService {
+    -scanner: Scanner
+    -r: Random
+    -cine: Cine
+    +crearPeliculas(): void
+    +crearSalas(): void
+    +llenarSala(): Sala
+    +mostrarSala(): void
+    +simulacion(): void
+}
+
+
+Sala --o Pelicula
+Cine --> Sala
+Cine --o Pelicula
+Sala --o Espectador
+CineService --> Cine
+
+@enduml

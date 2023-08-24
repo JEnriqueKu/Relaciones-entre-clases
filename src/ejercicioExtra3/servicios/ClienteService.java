@@ -12,8 +12,8 @@ public class ClienteService {
     public Cliente crearCliente(){
         Random random = new Random();
 
-        int nombreAzar = random.nextInt(Nombres.values().length)+1;
-        int apellidoAzar = random.nextInt(Apellidos.values().length)+1;
+        int nombreAzar = random.nextInt(Nombres.values().length);
+        int apellidoAzar = random.nextInt(Apellidos.values().length);
 
         return new Cliente(Nombres.values()[nombreAzar].name(),Apellidos.values()[apellidoAzar].name(),"Doc1","123@correo.com","Calle 24","934142321");
     }

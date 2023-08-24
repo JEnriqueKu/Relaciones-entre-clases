@@ -9,25 +9,33 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 
-public class Tienda {
+public class Aseguradora {
     Scanner scanner = new Scanner(System.in).useDelimiter("\n");
     PolizaService polizaService = new PolizaService();
     CuotaService cuotaService = new CuotaService();
     private ArrayList<Poliza> polizas = new ArrayList<>();
 
     public void registrarPoliza(){
+        // Agrega a la lista una poliza nueva
         polizas.add(polizaService.crearPoliza());
     }
     public void registrarCuota(){
-        System.out.println("Existen actualmente "+ polizas.size()+ " polizas, ¿A cual número de póliza desea agregar una cuota?");
-        int numeroDePoliza= scanner.nextInt();
-        for (Poliza poliza : polizas) {
-            if (poliza.getNumeroPoliza()==numeroDePoliza){
-                poliza.getCuotas().add(cuotaService.crearCuota(poliza.getCliente(),poliza.getVehiculo()));
-                }
+        //Confirma que existen polizas
+        if (polizas.isEmpty()) System.out.println("No existen pólizas para gregar cuotas");
+        else {
+            //Mostrar polizas existentes
+            System.out.println("Existen actualmente "+ polizas.size()+ " polizas, ¿A cual número de póliza desea agregar una cuota?");
+            int numeroDePoliza= scanner.nextInt();
+            //Buscar la poliza solicitada
+            for (Poliza poliza : polizas) {
+                //Crear cuota en la poliza
+                if (poliza.getNumeroPoliza() == numeroDePoliza)
+                    poliza.getCuotas().add(cuotaService.crearCuota(poliza.getCliente(), poliza.getVehiculo()));
             }
+        }
     }
     public void mostrarPolizas(){
+        //Confirma que existen polizas
         if (polizas.isEmpty()) System.out.println("No existen pólizas");
         else {
             for (Poliza poliza : polizas) {

@@ -4,7 +4,7 @@ import ejercicioExtra3.servicios.ClienteService;
 
 public class Main {
     public static void main(String[] args) {
-        Tienda tienda = new Tienda();
+        Aseguradora tienda = new Aseguradora();
 
         tienda.menu();
     }
